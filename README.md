@@ -2,14 +2,21 @@
 
 a simple event emitter/listener implementation.
 
-### Example
+#### Install
+
+```bash
+go get github.com/mghanii/go-events
+```
+
+#### Example
 
 ```go
 package main
 
 import (
-	"events"
 	"fmt"
+
+	"github.com/mghanii/go-events"
 )
 
 type Person struct {
