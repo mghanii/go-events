@@ -8,7 +8,7 @@ import (
 )
 
 type Emitter interface {
-	Emit(event string, event string)
+	Emit(eventId string, event string)
 	AddListener(eventId string, handler func(string, string)) string
 	RemoveListener(listenerId string) (bool, error)
 }
