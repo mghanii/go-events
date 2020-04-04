@@ -1,4 +1,5 @@
 #### go-events
+[![GoDoc](https://godoc.org/github.com/mghanii/go-events?status.svg)](https://pkg.go.dev/github.com/mghanii/go-events?tab=overview)
 
 a simple event emitter/listener implementation.
 
