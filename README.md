@@ -60,3 +60,16 @@ func main() {
 	fmt.Scanln()
 }
 ```
+
+output
+
+```bash
+2020/04/04 06:19:48 Listner added {id:'8065329c-a651-4210-a0b0-26ea1742e67e', event:'email-updated'}
+2020/04/04 06:19:48 Listner added {id:'2ca7e0f1-7929-46e8-8e27-cebbaa0709f4', event:'email-updated'}
+2020/04/04 06:19:48 Emiting event: 'email-updated'
+2020/04/04 06:19:48 Listner removed {id:'8065329c-a651-4210-a0b0-26ea1742e67e', event:'email-updated'}
+2020/04/04 06:19:48 Emiting event: 'email-updated'
+listener '8065329c-a651-4210-a0b0-26ea1742e67e': Adam updated his email from 'first@first.com' to 'second@second.com'
+listener '2ca7e0f1-7929-46e8-8e27-cebbaa0709f4': Adam updated his email from 'first@first.com' to 'second@second.com'
+listener '2ca7e0f1-7929-46e8-8e27-cebbaa0709f4': Adam updated his email from 'second@second.com' to 'third@third.com'
+```
