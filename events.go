@@ -1,3 +1,4 @@
+// package events is a simple event emitter/listener implementation.
 package events
 
 import (
@@ -7,6 +8,7 @@ import (
 	"github.com/google/uuid"
 )
 
+// Emitter interface specifies a set of methods for emitting, subscribing or unsubscribing to an event.
 type Emitter interface {
 	Emit(eventId string, event string)
 	AddListener(eventId string, handler func(string, string)) string
@@ -28,6 +30,7 @@ type eventEmitter struct {
 	listeners map[uuid.UUID]*listener
 }
 
+// The AddListener method adds an event listener, returns that listener id
 func (emitter *eventEmitter) AddListener(eventId string, handler func(string, string)) string {
 	listener := listener{
 		id:      uuid.New(),
@@ -49,6 +52,7 @@ func (emitter *eventEmitter) AddListener(eventId string, handler func(string, st
 	return listener.id.String()
 }
 
+// The RemoveListener method removes listener
 func (emitter *eventEmitter) RemoveListener(listenerId string) error {
 
 	id, err := uuid.Parse(listenerId)
@@ -66,6 +70,7 @@ func (emitter *eventEmitter) RemoveListener(listenerId string) error {
 	return errors.New("listener doesn't exist")
 }
 
+// The Emit method emits a new event
 func (emitter *eventEmitter) Emit(eventId string, event string) {
 	log.Printf("Emiting event: '%v'", eventId)
 	for _, listener := range emitter.listeners {
