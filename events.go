@@ -10,7 +10,7 @@ import (
 type Emitter interface {
 	Emit(eventId string, event string)
 	AddListener(eventId string, handler func(string, string)) string
-	RemoveListener(listenerId string) (bool, error)
+	RemoveListener(listenerId string) error
 }
 
 func NewEmitter() Emitter {
@@ -49,21 +49,21 @@ func (emitter *eventEmitter) AddListener(eventId string, handler func(string, st
 	return listener.id.String()
 }
 
-func (emitter *eventEmitter) RemoveListener(listenerId string) (bool, error) {
+func (emitter *eventEmitter) RemoveListener(listenerId string) error {
 
 	id, err := uuid.Parse(listenerId)
 
 	if err != nil {
-		return false, errors.New("invalid listener id")
+		return errors.New("invalid listener id")
 	}
 
 	if l, ok := emitter.listeners[id]; ok {
 		delete(emitter.listeners, id)
 		log.Printf("Listner removed {id:'%v', event:'%v'}\n", l.id, l.eventId)
-		return true, nil
+		return nil
 	}
 
-	return false, errors.New("listener doesn't exist")
+	return errors.New("listener doesn't exist")
 }
 
 func (emitter *eventEmitter) Emit(eventId string, event string) {
