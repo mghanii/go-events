@@ -1,4 +1,4 @@
-// package events is a simple event emitter/listener implementation.
+// Package events is a simple event emitter/listener implementation.
 package events
 
 import (
@@ -15,6 +15,7 @@ type Emitter interface {
 	RemoveListener(listenerId string) error
 }
 
+// NewEmitter returns an Emitter instance
 func NewEmitter() Emitter {
 	return &eventEmitter{listeners: make(map[uuid.UUID]*listener)}
 }
